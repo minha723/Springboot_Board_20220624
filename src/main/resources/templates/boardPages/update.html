@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<form action="/board/update" method="post">
+    <input type="text" name="boardWriter" th:value="${updateBoard.boardWriter}" readonly><br>
+    <input type="text" name="boardTitle" th:value="${updateBoard.boardTitle}" readonly><br>
+    <input type="text" name="boardPassword" th:value="${updateBoard.boardPassword}" readonly><br>
+    <input type="text" name="boardContents" th:value="${updateBoard.boardContents}" ><br>
+    <input type="text" name="boardHit" th:value="${updateBoard.boardHits}" readonly><br>
+    <input type="submit" value="작성">
+</form>
+
+</body>
+</html>

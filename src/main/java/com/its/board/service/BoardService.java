@@ -41,4 +41,13 @@ public class BoardService {
         }
         return boardDTOList;
     }
+
+    public Long update(BoardDTO boardDTO) {
+        BoardEntity boardEntity = BoardEntity.toUpdateEntity(boardDTO);
+         return boardRepository.save(boardEntity).getId();
+    }
+
+    public void deleteById(Long id) {
+        boardRepository.deleteById(id);
+    }
 }

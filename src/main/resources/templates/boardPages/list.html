@@ -14,14 +14,17 @@
         <th>비밀번호</th>
         <th>작성자</th>
         <th>내용</th>
+        <th>작성일자</th>
         <th>조회수</th>
     </tr>
     <tr th:each="board : ${boardList}">
         <td th:text="${board.id}"></td>
         <td th:onclick="detail([[${board.id}]])">[[${board.boardTitle}]]</td>
+<!--        <td><a href="@{|/board/${board.id}|}" th:text="${board.boardTitle}"></a></td>-->
         <td th:text="${board.boardPassword}"></td>
         <td th:text="${board.boardWriter}"></td>
         <td th:text="${board.boardContents}"></td>
+        <td th:text="*{#temporals.format(board.createdTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
         <td th:text="${board.boardHits}"></td>
     </tr>
 </table>

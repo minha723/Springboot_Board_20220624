@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -26,16 +26,39 @@
 
 
 <button onclick="update()">글수정</button>
-<button>글삭제</button>
+<button onclick="deleteBoard()">글삭제</button>
 
 <p id="pwInput"></p>
 </body>
 <script th:inline="javascript">
     const update = () => {
       const pwInput = document.getElementById("pwInput");
-      pwInput.innerHTML = "<input type=\"text\" id=\"pwConfirm\" name=\"boardPassword\" placeholder=\"비밀번호 입력창\">\n"
+      pwInput.innerHTML = "<input type=\"text\" id=\"pwConfirm\" name=\"boardPassword\" placeholder=\"비밀번호 입력창\">\n" +
+          "<button onclick=\"pwCheck()\">확인</button>"
     }
-
+    const pwCheck = () => {
+      const pwConfirm = document.getElementById("pwConfirm").value;
+      const pw = [[${board.boardPassword}]]
+        if(pw == pwConfirm){
+            location.href = "/board/update/" + [[${board.id}]];
+        }else {
+            alert("비밀번호 확인필요")
+        }
+    }
+    const deleteBoard = () => {
+        const pwInput = document.getElementById("pwInput");
+        pwInput.innerHTML = "<input type=\"text\" id=\"pwConfirm\" name=\"boardPassword\" placeholder=\"비밀번호 입력창\">\n" +
+            "<button onclick=\"pwCheckDelete()\">확인</button>"
+    }
+    const pwCheckDelete = () => {
+        const pwConfirm = document.getElementById("pwConfirm").value;
+        const pw = [[${board.boardPassword}]]
+        if(pw == pwConfirm){
+            location.href = "/board/delete/" + [[${board.id}]];
+        }else {
+            alert("비밀번호 확인필요")
+        }
+    }
 
 </script>
 </html>
