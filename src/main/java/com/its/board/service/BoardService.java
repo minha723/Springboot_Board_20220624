@@ -17,7 +17,7 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     public Long save(BoardDTO boardDTO) {
-        BoardEntity boardEntity = BoardEntity.toEntity(boardDTO);
+        BoardEntity boardEntity = BoardEntity.toSaveEntity(boardDTO);
         Long saveId = boardRepository.save(boardEntity).getId();
         return saveId;
     }
